@@ -21,11 +21,11 @@ Create in your repo  __`.github/workflows/feature.yaml`__
     perform:
       uses: cloudposse/github-actions-workflows-github-action-composite/.github/workflows/feature-branch.yml@main
       with:
-        organization: "${{ github.event.repository.owner.login }}"
-        repository: "${{ github.event.repository.name }}"
-        ref: "${{ github.event.pull_request.head.ref  }}"
+        organization: "&#36;{{ github.event.repository.owner.login }}"
+        repository: "&#36;{{ github.event.repository.name }}"
+        ref: "&#36;{{ github.event.pull_request.head.ref  }}"
       secrets:
-        github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        github-private-actions-pat: "&#36;{{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
 ```
 
 
@@ -34,9 +34,9 @@ Create in your repo  __`.github/workflows/feature.yaml`__
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-| organization | Repository owner organization (ex. acme for repo acme/example) | string | N/A | true |
+| organization | Repository owner organization (ex. acme for repo acme/example) | string | ${{ github.event.repository.owner.login }} | false |
 | ref | The fully-formed ref of the branch or tag that triggered the workflow run | string | ${{ github.ref }} | false |
-| repository | Repository name (ex. example for repo acme/example) | string | N/A | true |
+| repository | Repository name (ex. example for repo acme/example) | string | ${{ github.event.repository.name }} | false |
 | tests-prefix | Workflows file name prefix to run as tests | string | test-\* | false |
 
 
@@ -73,10 +73,10 @@ Create in your repo  __`.github/workflows/main.yaml`__
     perform:
       uses: cloudposse/github-actions-workflows-github-action-composite/.github/workflows/main-branch.yml@main
       with:
-        organization: "${{ github.event.repository.owner.login }}"
-        repository: "${{ github.event.repository.name }}"
+        organization: "&#36;{{ github.event.repository.owner.login }}"
+        repository: "&#36;{{ github.event.repository.name }}"
       secrets:
-        github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        github-private-actions-pat: "&#36;{{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
 ```
 
 
@@ -85,9 +85,9 @@ Create in your repo  __`.github/workflows/main.yaml`__
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-| organization | Repository owner organization (ex. acme for repo acme/example) | string | N/A | true |
+| organization | Repository owner organization (ex. acme for repo acme/example) | string | ${{ github.event.repository.owner.login }} | false |
 | ref | The fully-formed ref of the branch or tag that triggered the workflow run | string | ${{ github.ref }} | false |
-| repository | Repository name (ex. example for repo acme/example) | string | N/A | true |
+| repository | Repository name (ex. example for repo acme/example) | string | ${{ github.event.repository.name }} | false |
 | tests-prefix | Workflows file name prefix to run as tests | string | test-\* | false |
 
 

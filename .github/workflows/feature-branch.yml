@@ -18,11 +18,11 @@ name: |-
       perform:
         uses: cloudposse/github-actions-workflows-github-action-composite/.github/workflows/feature-branch.yml@main
         with:
-          organization: "${{ github.event.repository.owner.login }}"
-          repository: "${{ github.event.repository.name }}"
-          ref: "${{ github.event.pull_request.head.ref  }}"
+          organization: "&#36;{{ github.event.repository.owner.login }}"
+          repository: "&#36;{{ github.event.repository.name }}"
+          ref: "&#36;{{ github.event.pull_request.head.ref  }}"
         secrets:
-          github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+          github-private-actions-pat: "&#36;{{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
   ```
 
 on:
@@ -30,11 +30,13 @@ on:
     inputs:
       organization:
         description: "Repository owner organization (ex. acme for repo acme/example)"
-        required: true
+        required: false
+        default: ${{ github.event.repository.owner.login }}
         type: string
       repository:
         description: "Repository name (ex. example for repo acme/example)"
-        required: true
+        required: false
+        default: ${{ github.event.repository.name }}
         type: string
       ref:
         description: "The fully-formed ref of the branch or tag that triggered the workflow run"
