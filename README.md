@@ -119,9 +119,9 @@ Create in your repo  __`.github/workflows/feature.yaml`__
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-| organization | Repository owner organization (ex. acme for repo acme/example) | string | ${{ github.event.repository.owner.login }} | false |
+| organization | Repository owner organization (ex. acme for repo acme/example) | string | N/A | true |
 | ref | The fully-formed ref of the branch or tag that triggered the workflow run | string | ${{ github.ref }} | false |
-| repository | Repository name (ex. example for repo acme/example) | string | ${{ github.event.repository.name }} | false |
+| repository | Repository name (ex. example for repo acme/example) | string | N/A | true |
 | tests-prefix | Workflows file name prefix to run as tests | string | test-\* | false |
 
 
@@ -170,9 +170,9 @@ Create in your repo  __`.github/workflows/main.yaml`__
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|----------|
-| organization | Repository owner organization (ex. acme for repo acme/example) | string | ${{ github.event.repository.owner.login }} | false |
+| organization | Repository owner organization (ex. acme for repo acme/example) | string | N/A | true |
 | ref | The fully-formed ref of the branch or tag that triggered the workflow run | string | ${{ github.ref }} | false |
-| repository | Repository name (ex. example for repo acme/example) | string | ${{ github.event.repository.name }} | false |
+| repository | Repository name (ex. example for repo acme/example) | string | N/A | true |
 | tests-prefix | Workflows file name prefix to run as tests | string | test-\* | false |
 
 
