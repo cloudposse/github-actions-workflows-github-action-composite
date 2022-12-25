@@ -84,6 +84,13 @@ Application repository reference this reusable workflows should follow this stru
 
 
 <!-- markdownlint-disable -->
+## Workflows
+
+| Name | Description |
+|------|-------------|
+| [Features branch (Pull request) workflow ](#features-branch-pull-request-workflow) | Perform CI - lint `action.yml` and run tests  |
+| [Main branch workflow](#main-branch-workflow) | Lint `action.yml`, run tests and draft release |
+
 
 
 
