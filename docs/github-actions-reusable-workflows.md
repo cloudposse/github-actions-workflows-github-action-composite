@@ -21,11 +21,11 @@ Create in your repo  __`.github/workflows/feature.yaml`__
     perform:
       uses: cloudposse/github-actions-workflows-github-action-composite/.github/workflows/feature-branch.yml@main
       with:
-        organization: "&#36;{{ github.event.repository.owner.login }}"
-        repository: "&#36;{{ github.event.repository.name }}"
-        ref: "&#36;{{ github.event.pull_request.head.ref  }}"
+        organization: "${{ github.event.repository.owner.login }}"
+        repository: "${{ github.event.repository.name }}"
+        ref: "${{ github.event.pull_request.head.ref  }}"
       secrets:
-        github-private-actions-pat: "&#36;{{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
 ```
 
 
@@ -73,10 +73,10 @@ Create in your repo  __`.github/workflows/main.yaml`__
     perform:
       uses: cloudposse/github-actions-workflows-github-action-composite/.github/workflows/main-branch.yml@main
       with:
-        organization: "&#36;{{ github.event.repository.owner.login }}"
-        repository: "&#36;{{ github.event.repository.name }}"
+        organization: "${{ github.event.repository.owner.login }}"
+        repository: "${{ github.event.repository.name }}"
       secrets:
-        github-private-actions-pat: "&#36;{{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
+        github-private-actions-pat: "${{ secrets.PUBLIC_REPO_ACCESS_TOKEN }}"
 ```
 
 
