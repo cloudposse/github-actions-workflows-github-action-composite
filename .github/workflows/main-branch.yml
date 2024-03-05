@@ -87,7 +87,7 @@ jobs:
       - name: YAML file validation
         uses: mpoc/nexus-validate-using-remote-schema-action@main
         with:
-          api-endpoint: https://json.schemastore.org/github-action.json
+          api-endpoint: https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/github-action.json
           yaml-file: action.yml
 
   test:
