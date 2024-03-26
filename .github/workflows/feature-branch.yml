@@ -51,6 +51,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   ci:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@ci-github-action
