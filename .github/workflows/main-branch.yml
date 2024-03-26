@@ -22,8 +22,6 @@ name: |-
         with:
           organization: "$\{\{ github.event.repository.owner.login \}\}"
           repository: "$\{\{ github.event.repository.name \}\}"
-        secrets:
-          github-private-actions-pat: "$\{\{ secrets.PUBLIC_REPO_ACCESS_TOKEN \}\}"
   ```
 
 on:
@@ -49,10 +47,6 @@ on:
         required: false
         type: string
         default: 'test-*'
-    secrets:
-      github-private-actions-pat:
-        description: "Github PAT allow to trigger workflows for testing"
-        required: true
 
 permissions:
   contents: write

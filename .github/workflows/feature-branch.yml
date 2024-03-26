@@ -21,8 +21,6 @@ name: |-
           organization: "$\{\{ github.event.repository.owner.login \}\}"
           repository: "$\{\{ github.event.repository.name \}\}"
           ref: "$\{\{ github.event.pull_request.head.ref  \}\}"
-        secrets:
-          github-private-actions-pat: "$\{\{ secrets.PUBLIC_REPO_ACCESS_TOKEN \}\}"
   ```
 
 on:
@@ -48,10 +46,6 @@ on:
         required: false
         type: string
         default: 'test-*'
-    secrets:
-      github-private-actions-pat:
-        description: "Github PAT allow to trigger workflows for testing"
-        required: true
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
