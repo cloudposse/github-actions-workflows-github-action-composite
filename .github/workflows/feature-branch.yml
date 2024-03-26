@@ -98,7 +98,6 @@ jobs:
         with:
           owner: ${{ inputs.organization }}
           repo: ${{ inputs.repository }}
-          github_token: ${{ secrets.github-private-actions-pat }}
           workflow_file_name: ${{ matrix.env }}
           ref: ${{ inputs.ref }}
           wait_interval: 10
