@@ -1,0 +1,35 @@
+name: |-
+  Release workflow 
+
+  ```
+
+on:
+  workflow_call:
+    inputs:
+      organization:
+        description: "Repository owner organization (ex. acme for repo acme/example)"
+        required: false
+        default: ${{ github.event.repository.owner.login }}
+        type: string
+      repository:
+        description: "Repository name (ex. example for repo acme/example)"
+        required: false
+        default: ${{ github.event.repository.name }}
+        type: string
+      version:
+        description: "Release version tag"
+        required: false
+        default: ${{ github.event.release.tag_name }}
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    uses: cloudposse/github-actions-workflows/.github/workflows/controller-release-branches.yml@ci-github-action
