@@ -33,3 +33,4 @@ concurrency:
 jobs:
   release:
     uses: cloudposse/.github/.github/workflows/shared-release-branches.yml@release-branches
+    secrets: inherit
