@@ -47,7 +47,12 @@ on:
         required: false
         type: string
         default: 'test-*'
-
+      publish:
+        description: "Whether to publish a new release immediately"
+        required: false
+        default: "true"
+        type: string
+        
 permissions:
   contents: write
   actions: write
@@ -69,5 +74,5 @@ jobs:
     needs: [ ci ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@release-branches
     with:
-      publish: true
+      publish: ${{ inputs.publish }}
     secrets: inherit
