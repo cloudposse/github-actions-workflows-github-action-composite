@@ -85,5 +85,4 @@ jobs:
         uses: actions/checkout@v4
       - run: |-
           git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ needs.draft_release.outputs.tag_name }}
-          git push origin ${{ needs.draft_release.outputs.tag_name }}      
-  
+          git push origin ${{ needs.draft_release.outputs.tag_name }} --force      
