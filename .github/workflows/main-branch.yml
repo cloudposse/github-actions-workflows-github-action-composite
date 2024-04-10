@@ -107,5 +107,7 @@ jobs:
           token: ${{ steps.github-app.outputs.token }}
 
       - run: |-
+          git config --global user.email "you@example.com"
+          git config --global user.name "Your Name"          
           git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ needs.draft_release.outputs.tag_name }}
           git push origin ${{ needs.draft_release.outputs.tag_name }} --force      
