@@ -57,7 +57,7 @@ permissions:
 
 jobs:
   ci:
-    uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@ci-github-action
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@main
     with:
       organization: ${{ inputs.organization }}
       repository: ${{ inputs.repository }}
