@@ -67,7 +67,7 @@ jobs:
 
   draft_release:
     needs: [ ci ]
-    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@release-branches
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
     with:
       publish: true
     secrets: inherit
