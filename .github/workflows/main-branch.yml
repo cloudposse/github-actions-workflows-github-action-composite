@@ -77,37 +77,44 @@ jobs:
       publish: ${{ inputs.publish }}
     secrets: inherit
 
-  tag:
-    needs: [ draft_release ]
-    runs-on: ubuntu-latest
-    environment: release
-    steps:
-      - uses: actions/create-github-app-token@v1
-        id: github-app
-        with:
-          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
-          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+  perform:
+    uses: cloudposse/.github/.github/workflows/shared-tf-provider-release.yml@main-branch-go-releaser
+    with:
+      version: ${{ needs.draft_release.outputs.tag_name }}
+    secrets: inherit
 
-      - name: Context
-        id: context
-        uses: cloudposse/github-action-yaml-config-query@0.1.3
-        with:
-          query: .${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
-          config: |-
-            true: 
-              config: auto-release.yml
-              latest: true
-            false:
-              config: auto-release-hotfix.yml
-              latest: false
 
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          token: ${{ steps.github-app.outputs.token }}
-
-      - run: |-
-          git config --global user.email "you@example.com"
-          git config --global user.name "Your Name"          
-          git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ needs.draft_release.outputs.tag_name }}
-          git push origin ${{ needs.draft_release.outputs.tag_name }} --force      
+#  tag:
+#    needs: [ draft_release ]
+#    runs-on: ubuntu-latest
+#    environment: release
+#    steps:
+#      - uses: actions/create-github-app-token@v1
+#        id: github-app
+#        with:
+#          app-id: ${{ vars.BOT_GITHUB_APP_ID }}
+#          private-key: ${{ secrets.BOT_GITHUB_APP_PRIVATE_KEY }}
+#
+#      - name: Context
+#        id: context
+#        uses: cloudposse/github-action-yaml-config-query@0.1.3
+#        with:
+#          query: .${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
+#          config: |-
+#            true:
+#              config: auto-release.yml
+#              latest: true
+#            false:
+#              config: auto-release-hotfix.yml
+#              latest: false
+#
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#        with:
+#          token: ${{ steps.github-app.outputs.token }}
+#
+#      - run: |-
+#          git config --global user.email "you@example.com"
+#          git config --global user.name "Your Name"
+#          git tag -a -m "Release ${{ needs.draft_release.outputs.tag_name }}" ${{ needs.draft_release.outputs.tag_name }}
+#          git push origin ${{ needs.draft_release.outputs.tag_name }} --force
