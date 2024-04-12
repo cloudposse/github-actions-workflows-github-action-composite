@@ -78,6 +78,7 @@ jobs:
     secrets: inherit
 
   perform:
+    needs: [ draft_release ]
     uses: cloudposse/.github/.github/workflows/shared-tf-provider-release.yml@main-branch-go-releaser
     with:
       version: ${{ needs.draft_release.outputs.tag_name }}
