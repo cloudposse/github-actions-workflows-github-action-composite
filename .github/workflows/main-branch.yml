@@ -110,5 +110,5 @@ jobs:
     needs: [ perform ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@added-outputs
     with:
-      publish: true
+      publish: ${{ inputs.publish }}
     secrets: inherit
