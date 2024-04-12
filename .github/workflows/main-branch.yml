@@ -74,7 +74,7 @@ jobs:
     needs: [ ci ]
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@added-outputs
     with:
-      publish: ${{ inputs.publish }}
+      publish: false
     secrets: inherit
 
 #  tag:
@@ -104,4 +104,11 @@ jobs:
     uses: cloudposse/.github/.github/workflows/shared-tf-provider-release.yml@main-branch-go-releaser
     with:
       version: ${{ needs.draft_release.outputs.tag_name }}
+    secrets: inherit
+
+  publish_release:
+    needs: [ perform ]
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@added-outputs
+    with:
+      publish: true
     secrets: inherit
