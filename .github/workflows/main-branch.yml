@@ -75,6 +75,7 @@ jobs:
     uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@added-outputs
     with:
       publish: false
+      disable-releaser: true
     secrets: inherit
 
 #  tag:
