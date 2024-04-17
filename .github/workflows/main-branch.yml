@@ -70,7 +70,7 @@ jobs:
       ref: ${{ inputs.ref }}
       tests-prefix: ${{ inputs.tests-prefix }}
 
-  perform:
+  release:
     needs: [ ci ]
     uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@get-rid-pat
     with:
