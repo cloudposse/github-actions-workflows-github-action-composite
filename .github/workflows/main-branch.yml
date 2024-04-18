@@ -72,7 +72,7 @@ jobs:
 
   release:
     needs: [ ci ]
-    uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@get-rid-pat
+    uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@main
     with:
       publish: ${{ inputs.publish }}
     secrets: inherit
