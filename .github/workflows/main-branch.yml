@@ -68,6 +68,7 @@ jobs:
       filter-mode: nofilter
       suggestions: false
       runs-on: '["ubuntu-latest"]'
+    secrets: inherit
 
   ci:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@main
