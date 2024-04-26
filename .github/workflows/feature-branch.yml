@@ -56,6 +56,17 @@ permissions:
   actions: write
 
 jobs:
+  ci-readme:
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@readme-update
+    with:
+      # Workaround for https://github.com/community/community/discussions/9099
+      # We should switch to nofilter once it's fixed
+      filter-mode: diff_context
+      suggestions: true
+      runs-on: [ubuntu-latest]
+      ref: ${{ github.event.pull_request.head.ref }}
+      repository: ${{ github.event.pull_request.head.repo.full_name }}
+
   ci:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@main
     with:

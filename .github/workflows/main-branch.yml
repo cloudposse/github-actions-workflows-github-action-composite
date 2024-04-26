@@ -62,6 +62,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  ci-readme:
+    uses: cloudposse/github-actions-workflows/.github/workflows/ci-readme.yml@readme-update
+    with:
+      filter-mode: nofilter
+      suggestions: false
+      runs-on: [ubuntu-latest]
+
   ci:
     uses: cloudposse/github-actions-workflows/.github/workflows/ci-github-action.yml@main
     with:
@@ -71,7 +78,7 @@ jobs:
       tests-prefix: ${{ inputs.tests-prefix }}
 
   release:
-    needs: [ ci ]
+    needs: [ ci, ci-readme]
     uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@main
     with:
       publish: ${{ inputs.publish }}
