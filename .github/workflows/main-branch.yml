@@ -68,7 +68,8 @@ jobs:
       filter-mode: nofilter
       suggestions: false
       runs-on: '["ubuntu-latest"]'
-
+    secrets: inherit
+    
   context:
     runs-on: ubuntu-latest
     steps:
