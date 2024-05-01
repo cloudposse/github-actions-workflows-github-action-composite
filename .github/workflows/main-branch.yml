@@ -80,7 +80,7 @@ jobs:
 
   release:
     needs: [ ci, ci-readme ]
-    uses: cloudposse/.github/.github/workflows/shared-go-auto-release.yml@main
+    uses: cloudposse/.github/.github/workflows/shared-auto-release.yml@main
     with:
       publish: ${{ inputs.publish }}
     secrets: inherit
