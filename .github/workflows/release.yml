@@ -25,6 +25,8 @@ on:
 permissions:
   id-token: write
   contents: write
+  pull-request: write
+  issues: write
 
 concurrency:
   group: ${{ github.workflow }}
